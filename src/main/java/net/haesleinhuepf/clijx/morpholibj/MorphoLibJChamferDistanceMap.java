@@ -21,7 +21,7 @@ import net.haesleinhuepf.clij2.utilities.IsCategorized;
 import org.scijava.plugin.Plugin;
 
 @Plugin(type = CLIJMacroPlugin.class, name = "CLIJx_morphoLibJChamferDistanceMap")
-public class MorphoLibJChamferDistanceMap extends AbstractCLIJ2Plugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation, IsCategorized, HasAuthor, HasLicense
+public class MorphoLibJChamferDistanceMap extends AbstractCLIJ2Plugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation, IsCategorized
 {
     static String weightLabel = ChamferWeights3D.WEIGHTS_3_4_5_7.toString();
     static boolean normalize = true;
@@ -79,13 +79,4 @@ public class MorphoLibJChamferDistanceMap extends AbstractCLIJ2Plugin implements
         return "Binary";
     }
 
-    @Override
-    public String getAuthorName() {
-        return "Put your name here.";
-    }
-
-    @Override
-    public String getLicense() {
-        return "Public domain";
-    }
 }

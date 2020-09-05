@@ -16,7 +16,7 @@ import net.haesleinhuepf.clij2.utilities.IsCategorized;
 import org.scijava.plugin.Plugin;
 
 @Plugin(type = CLIJMacroPlugin.class, name = "CLIJx_morphoLibJConnectedComponentsLabeling")
-public class MorphoLibJConnectedComponentsLabeling extends AbstractCLIJ2Plugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation, IsCategorized, HasAuthor, HasLicense
+public class MorphoLibJConnectedComponentsLabeling extends AbstractCLIJ2Plugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation, IsCategorized
 {
     @Override
     public String getParameterHelpText() {
@@ -61,15 +61,5 @@ public class MorphoLibJConnectedComponentsLabeling extends AbstractCLIJ2Plugin i
     @Override
     public String getCategories() {
         return "Labeling";
-    }
-
-    @Override
-    public String getAuthorName() {
-        return "Put your name here.";
-    }
-
-    @Override
-    public String getLicense() {
-        return "Public domain";
     }
 }
