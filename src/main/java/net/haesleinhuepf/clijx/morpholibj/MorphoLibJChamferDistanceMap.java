@@ -16,12 +16,13 @@ import net.haesleinhuepf.clij.macro.documentation.OffersDocumentation;
 import net.haesleinhuepf.clij2.AbstractCLIJ2Plugin;
 import net.haesleinhuepf.clij2.CLIJ2;
 import net.haesleinhuepf.clij2.utilities.HasAuthor;
+import net.haesleinhuepf.clij2.utilities.HasClassifiedInputOutput;
 import net.haesleinhuepf.clij2.utilities.HasLicense;
 import net.haesleinhuepf.clij2.utilities.IsCategorized;
 import org.scijava.plugin.Plugin;
 
 @Plugin(type = CLIJMacroPlugin.class, name = "CLIJx_morphoLibJChamferDistanceMap")
-public class MorphoLibJChamferDistanceMap extends AbstractCLIJ2Plugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation, IsCategorized
+public class MorphoLibJChamferDistanceMap extends AbstractCLIJ2Plugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation, IsCategorized, HasClassifiedInputOutput
 {
     static String weightLabel = ChamferWeights3D.WEIGHTS_3_4_5_7.toString();
     static boolean normalize = true;
@@ -76,7 +77,16 @@ public class MorphoLibJChamferDistanceMap extends AbstractCLIJ2Plugin implements
 
     @Override
     public String getCategories() {
-        return "Binary";
+        return "Image";
     }
 
+    @Override
+    public String getInputType() {
+        return "Binary Image";
+    }
+
+    @Override
+    public String getOutputType() {
+        return "Image";
+    }
 }
