@@ -11,12 +11,13 @@ import net.haesleinhuepf.clij.macro.documentation.OffersDocumentation;
 import net.haesleinhuepf.clij2.AbstractCLIJ2Plugin;
 import net.haesleinhuepf.clij2.CLIJ2;
 import net.haesleinhuepf.clij2.utilities.HasAuthor;
+import net.haesleinhuepf.clij2.utilities.HasClassifiedInputOutput;
 import net.haesleinhuepf.clij2.utilities.HasLicense;
 import net.haesleinhuepf.clij2.utilities.IsCategorized;
 import org.scijava.plugin.Plugin;
 
-@Plugin(type = CLIJMacroPlugin.class, name = "CLIJx_morphoLibJConnectedComponentsLabeling")
-public class MorphoLibJConnectedComponentsLabeling extends AbstractCLIJ2Plugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation, IsCategorized
+@Plugin(type = CLIJMacroPlugin.class, name = "CLIJx_morphoLibJFloodFillComponentsLabeling")
+public class MorphoLibJFloodFillComponentsLabeling extends AbstractCLIJ2Plugin implements CLIJMacroPlugin, CLIJOpenCLProcessor, OffersDocumentation, IsCategorized, HasClassifiedInputOutput
 {
     @Override
     public String getParameterHelpText() {
@@ -25,11 +26,11 @@ public class MorphoLibJConnectedComponentsLabeling extends AbstractCLIJ2Plugin i
 
     @Override
     public boolean executeCL() {
-        boolean result = morphoLibJConnectedComponentsLabeling(getCLIJ2(), (ClearCLBuffer) (args[0]), (ClearCLBuffer) (args[1]));
+        boolean result = morphoLibJFloodFillComponentsLabeling(getCLIJ2(), (ClearCLBuffer) (args[0]), (ClearCLBuffer) (args[1]));
         return result;
     }
 
-    public static boolean morphoLibJConnectedComponentsLabeling(CLIJ2 clij2, ClearCLBuffer input1, ClearCLBuffer output) {
+    public static boolean morphoLibJFloodFillComponentsLabeling(CLIJ2 clij2, ClearCLBuffer input1, ClearCLBuffer output) {
         // pull image from GPU
         ImageStack input_stack = clij2.pull(input1).getStack();
 
@@ -61,5 +62,15 @@ public class MorphoLibJConnectedComponentsLabeling extends AbstractCLIJ2Plugin i
     @Override
     public String getCategories() {
         return "Labeling";
+    }
+
+    @Override
+    public String getInputType() {
+        return "Binary Image";
+    }
+
+    @Override
+    public String getOutputType() {
+        return "Label Image";
     }
 }
