@@ -73,4 +73,10 @@ public class MorphoLibJFloodFillComponentsLabeling extends AbstractCLIJ2Plugin i
     public String getOutputType() {
         return "Label Image";
     }
+    
+    
+    @Override
+    public ClearCLBuffer createOutputBufferFromSource(ClearCLBuffer input) {
+        return clij.create(input.getDimensions(), NativeTypeEnum.Float);
+    }
 }
